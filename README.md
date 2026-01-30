@@ -1,32 +1,32 @@
-# Flask Блог - Повноцінний веб-додаток
+# Flask log - testing web app using flask and py
 
-Це приклад складнішого Flask-проекту, який демонструє базові концепції розробки веб-додатків.
+Flask project which uses HTML views.
 
-## Функціонал
+## Functionality
 
-### Автентифікація користувачів
-- Реєстрація нових користувачів
-- Вхід/вихід з системи
-- Захист маршрутів (login_required)
-- Хешування паролів
+### Authentification 
+- Reistration
+- Login/logout
+- Routing security (login_required)
+- Pwd hashing
 
-### CRUD операції для постів
-- **Create** - Створення нових постів
-- **Read** - Перегляд всіх постів і окремих постів
-- **Update** - Редагування власних постів
-- **Delete** - Видалення власних постів
+### CRUD
+- **Create** - New posts
+- **Read** - Rad all or separate posts
+- **Update** - Edit/update
+- **Delete** - Delete
 
-### Додаткові можливості
-- Профілі користувачів
-- Зв'язок між користувачами та постами
-- Flash-повідомлення для користувача
-- Responsive дизайн (Bootstrap 5)
-- Валідація форм
+### Additional functionality
+- User profiles
+- User - post relationship
+- Flash-messages for users
+- Responsive design (Bootstrap 5)
+- Form validation
 
-## Структура проекту
+## Project struture
 
 ```
-flask-blog/
+/
 │
 ├── app.py                 # Головний файл додатку
 ├── requirements.txt       # Залежності проекту
@@ -43,85 +43,87 @@ flask-blog/
     └── profile.html      # Профіль користувача
 ```
 
-## Встановлення та запуск
+## How to run
 
-### 1. Встановіть залежності
+### 1. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. Запустіть додаток
+### 2. Run app
 
 ```bash
 python app.py
 ```
 
-### 3. Відкрийте браузер
+### 3. Open web browser
 
-Перейдіть на http://127.0.0.1:5000/
+Open http://127.0.0.1:5000/
 
-## Використані технології
+Deployed version into renderer: https://flaskportalpy.onrender.com/
 
-- **Flask** - веб-фреймворк
-- **Flask-SQLAlchemy** - ORM для роботи з базою даних
-- **SQLite** - база даних
-- **Werkzeug** - утиліти для хешування паролів
-- **Bootstrap 5** - CSS фреймворк для дизайну
-- **Jinja2** - шаблонізатор (вбудований у Flask)
+## Tech stack
 
-## Основні концепції Flask
+- **Flask** - web framework
+- **Flask-SQLAlchemy** - ORM
+- **SQLite** - BD
+- **Werkzeug** - pwd hashing
+- **Bootstrap 5** - CSS framework
+- **Jinja2** - templates (build in into Flask)
 
-### 1. Маршрутизація (Routing)
+## Main Flask conceptions
+
+### 1. Routing
 ```python
 @app.route('/')
 def index():
     return render_template('index.html')
 ```
 
-### 2. Методи HTTP
+### 2. HTTP Methods
 ```python
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        # Обробка форми
+        # Form handling
 ```
 
-### 3. Моделі бази даних
+### 3. DB models
 ```python
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True)
 ```
 
-### 4. Сесії
+### 4. Sessions
 ```python
 session['user_id'] = user.id
 if 'user_id' in session:
-    # Користувач увійшов
+    # User logged in
 ```
 
-### 5. Декоратори
+### 5. Decorators
 ```python
 @login_required
 def protected_route():
-    # Доступно тільки для авторизованих
+    # Only when logged in
 ```
 
-### 6. Flash повідомлення
+### 6. Flash messages
 ```python
-flash('Операція успішна!', 'success')
+flash('Successful action!', 'success')
 ```
 
-### 7. Шаблони та наслідування
+### 7. Templates and inheritance
 ```python
 {% extends "base.html" %}
 {% block content %}
-    <!-- Контент -->
+    <!-- Content -->
 {% endblock %}
 ```
 
-## Можливі покращення
+## Possible improvements
 
 - Додати пагінацію для постів
 - Реалізувати коментарі до постів
@@ -134,7 +136,7 @@ flash('Операція успішна!', 'success')
 - REST API
 - Тести
 
-## Безпека
+## Security
 
 ⚠️ **ВАЖЛИВО**: Цей проект створений для навчання. Для production використання потрібно:
 
