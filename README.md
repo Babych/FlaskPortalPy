@@ -28,19 +28,19 @@ Flask project which uses HTML views.
 ```
 /
 │
-├── app.py                 # Головний файл додатку
-├── requirements.txt       # Залежності проекту
-├── blog.db               # База даних SQLite (створюється автоматично)
+├── app.py                 # main file
+├── requirements.txt       # dependencies
+├── blog.db               # SQLite db file created locally 
 │
-└── templates/            # HTML шаблони
-    ├── base.html         # Базовий шаблон
-    ├── index.html        # Головна сторінка
-    ├── register.html     # Реєстрація
-    ├── login.html        # Вхід
-    ├── new_post.html     # Створення поста
-    ├── view_post.html    # Перегляд поста
-    ├── edit_post.html    # Редагування поста
-    └── profile.html      # Профіль користувача
+└── templates/            # HTML templates
+    ├── base.html         # Base template
+    ├── index.html        # Main page
+    ├── register.html     # Registration
+    ├── login.html        # Entry
+    ├── new_post.html     # Post creation
+    ├── view_post.html    # Post view
+    ├── edit_post.html    # Post edit
+    └── profile.html      # User profile
 ```
 
 ## How to run
@@ -125,29 +125,23 @@ flash('Successful action!', 'success')
 
 ## Possible improvements
 
-- Додати пагінацію для постів
-- Реалізувати коментарі до постів
-- Додати можливість лайкати пости
-- Реалізувати пошук постів
-- Додати категорії/теги
-- Завантаження зображень
-- Email верифікація
-- Відновлення паролю
+- Paggination
+- Comments
+- Likes
+- Search
+- Tags
+- Images
+- Email verification
+- PWD reset
 - REST API
-- Тести
+- Tests
 
 ## Security
 
-⚠️ **ВАЖЛИВО**: Цей проект створений для навчання. Для production використання потрібно:
-
-1. Змінити SECRET_KEY на надійний випадковий ключ
-2. Використовувати PostgreSQL або MySQL замість SQLite
-3. Додати HTTPS
-4. Реалізувати rate limiting
-5. Додати CSRF захист (Flask-WTF)
-6. Валідацію на стороні сервера
-7. Escaped output у шаблонах (Jinja2 робить це автоматично)
-
-## Ліцензія
-
-Навчальний проект - використовуйте вільно!
+1. Edit SECRET_KEY
+2. Use PostgreSQL аorбо MySQL instead of SQLite
+3. Add HTTPS
+4. Make rate limiting
+5. Add CSRF protection (Flask-WTF)
+6. Server validation
+7. Escaped output in templates (Jinja2 does it out of the box)
