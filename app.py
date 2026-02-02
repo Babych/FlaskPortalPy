@@ -27,7 +27,7 @@ class Post(db.Model):
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
-# Декоратор для захисту маршрутів
+# Decorator for routing security
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
@@ -37,7 +37,7 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
-# Маршрути
+# Routing
 @app.route('/')
 def index():
     posts = Post.query.order_by(Post.created_at.desc()).all()
@@ -155,7 +155,7 @@ def profile(username):
     posts = Post.query.filter_by(user_id=user.id).order_by(Post.created_at.desc()).all()
     return render_template('profile.html', user=user, posts=posts)
 
-# Ініціалізація бази даних
+# DB Init
 with app.app_context():
     db.create_all()
 
